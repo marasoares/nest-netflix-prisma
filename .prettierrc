@@ -1,0 +1,6 @@
+{
+  "singleQuote": true,
+  "parse": "flow",
+  "trailingComma": "all",
+  "endOfLine": "auto"
+}
