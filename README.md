@@ -1,73 +1,72 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Postgresql + NestJs + TypeScript + Prisma - Netflix
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Projeto Netflix, utilizando as tecnologias:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+###### PostgreSQL
 
-## Description
+Banco de dados utilizado para arquivar os Filmes, Gênero e Participantes cadastrados no projeto.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+###### NestJs com TypeScript
 
-## Installation
+Com orientação a objetos e Decorators
 
-```bash
-$ npm install
-```
+###### Prisma
 
-## Running the app
+Responsável por fazer o CRUD no Banco de Dados
 
-```bash
-# development
-$ npm run start
+##### Rotas e Endpoints
 
-# watch mode
-$ npm run start:dev
+###### Filmes
 
-# production mode
-$ npm run start:prod
-```
+Na rota `filmes`temos o CRUD completo utilizando os endpoints do Prisma:
 
-## Test
+- `createPrisma` incluindo um novo filme;
 
-```bash
-# unit tests
-$ npm run test
+- `findAllPrisma` listando todas os filmes cadastrados;
 
-# e2e tests
-$ npm run test:e2e
+- `findOnePrisma(id)` listando um filme cadastrado, retornando pelo Id;
+- `updatePrisma(id)` alterando um filme cadastrado, retornando pelo Id;
+- `removePrisma(id)`exclui um filme cadastrado pelo Id.
 
-# test coverage
-$ npm run test:cov
-```
+###### Gênero
 
-## Support
+Em `gênero`nossos dados são reduzidos a Id e nome do gênero do filme, onde temos a integração One to Many:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- `createPrisma` incluindo um novo gênero;
 
-## Stay in touch
+- `findAllPrisma` listando todas os gêneros cadastrados;
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- `findOnePrisma(id)` listando um gênero cadastrado, retornando pelo Id;
+- `updatePrisma(id)` alterando um gênero cadastrado, retornando pelo Id;
+- `removePrisma(id)`exclui um gênero cadastrado pelo Id.
 
-## License
+###### Participante
 
-Nest is [MIT licensed](LICENSE).
+Em `participante` fazemos a integração Many to Many, tenvando em conta que um personagem pode participar de vários filmes:
+
+- `createPrisma` incluindo um novo participante;
+
+- `findAllPrisma` listando todas os participante cadastrados;
+
+- `findOnePrisma(id)` listando um participante cadastrado, retornando pelo Id;
+- `updatePrisma(id)` alterando um participante cadastrado, retornando pelo Id;
+- `removePrisma(id)`exclui um participante cadastrado pelo Id.
+
+Projeto roda através do comando `npm run start:dev`
+
+Caso seja necessário alterar o model do `schema.prisma` devemos rodar os comando abaixo, na respectiva ordem:
+
+1. `npx prisma generate`
+2. `npx prisma db push`
+
+E podemos utilizar o `prisma studio` para fazer as alterações no Banco de Dados através da funcionalidade do Prisma Studio, através do comando:
+
+`npx prisma studio`
+
+Que irá gerar uma pasta rodando em localhost:5555 onde conseguimos manipular os dados e os mesmos são inseridos no PostgreSQL.
+
+Projeto elaborado por Mara Soares
+
+Aluna: Blue EdTech
+
+Módulo 4 - Backend
