@@ -2,21 +2,21 @@
 
 Projeto Netflix, utilizando as tecnologias:
 
-###### PostgreSQL
+`PostgreSQL`
 
 Banco de dados utilizado para arquivar os Filmes, Gênero e Participantes cadastrados no projeto.
 
-###### NestJs com TypeScript
+`NestJs com TypeScript`
 
 Com orientação a objetos e Decorators
 
-###### Prisma
+`Prisma`
 
 Responsável por fazer o CRUD no Banco de Dados
 
-##### Rotas e Endpoints
+- Rotas e Endpoints
 
-###### Filmes
+`Filmes`
 
 Na rota `filmes`temos o CRUD completo utilizando os endpoints do Prisma:
 
@@ -28,7 +28,7 @@ Na rota `filmes`temos o CRUD completo utilizando os endpoints do Prisma:
 - `updatePrisma(id)` alterando um filme cadastrado, retornando pelo Id;
 - `removePrisma(id)`exclui um filme cadastrado pelo Id.
 
-###### Gênero
+`Gênero`
 
 Em `gênero`nossos dados são reduzidos a Id e nome do gênero do filme, onde temos a integração One to Many:
 
@@ -40,7 +40,7 @@ Em `gênero`nossos dados são reduzidos a Id e nome do gênero do filme, onde te
 - `updatePrisma(id)` alterando um gênero cadastrado, retornando pelo Id;
 - `removePrisma(id)`exclui um gênero cadastrado pelo Id.
 
-###### Participante
+`Participante`
 
 Em `participante` fazemos a integração Many to Many, tenvando em conta que um personagem pode participar de vários filmes:
 
