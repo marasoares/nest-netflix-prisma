@@ -9,36 +9,19 @@ export class FilmesService {
   // eslint-disable-next-line prettier/prettier
   constructor(private prisma: PrismaService) {}
 
-  // create(createFilmeDto: CreateFilmeDto) {
-  //   lista.push(createFilmeDto);
-  //   return `Add com sucesso filme: ${createFilmeDto.nome}`;
-  // }
-
   async createPrisma(createFilmeDto: CreateFilmeDto): Promise<Filme> {
     return await this.prisma.filme.create({
       data: { ...createFilmeDto },
     });
   }
 
-  // findAll() {
-  //   return lista;
-  // }
-
   async findAllPrisma(): Promise<Filme[]> {
     return await this.prisma.filme.findMany();
   }
 
-  // findOne(id: number) {
-  //   return lista[id];
-  // }
-
   async findOnePrisma(id: number): Promise<Filme> {
     return await this.prisma.filme.findUnique({ where: { id } });
   }
-
-  // update(id: number, updateFilmeDto: UpdateFilmeDto) {
-  //   return `This action updates a #${id} filme`;
-  // }
 
   async updatePrisma(
     id: number,
@@ -49,11 +32,6 @@ export class FilmesService {
       where: { id },
     });
   }
-
-  // remove(id: number) {
-  //   delete lista[id];
-  //   return `deletado com sucesso id: ${id}`;
-  // }
 
   async removePrisma(id: number) {
     return await this.prisma.filme.delete({ where: { id } });

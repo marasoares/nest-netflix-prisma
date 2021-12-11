@@ -18,8 +18,7 @@ model Filme {
   tempo_duracao   String 
   generos         Genero  @relation (fields: [generoid] , references: [id] )
   generoid        Int
-  participantes   Participante[]  @relation (fields: [participanteid] , references: [id] )
-  participanteid  Int?  
+  participantes   Participante[]  
 }
 
 model  Genero {
@@ -34,5 +33,6 @@ model Participante {
   imagem          String
   data_nascimento String
   staff           String
-  filme           Filme[]   
+  filme           Filme[]    @relation(fields: [ filmeid ], references: [id])
+  filmeid         Int?  
 }
