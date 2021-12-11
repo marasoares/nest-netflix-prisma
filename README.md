@@ -18,7 +18,7 @@ Responsável por fazer o CRUD no Banco de Dados
 
 `Filmes`
 
-Na rota `filmes`temos o CRUD completo utilizando os endpoints do Prisma:
+Na rota `filmes.services`temos o CRUD completo utilizando os endpoints do Prisma e os Decorators do NestJs:
 
 - `createPrisma` incluindo um novo filme;
 
@@ -30,7 +30,7 @@ Na rota `filmes`temos o CRUD completo utilizando os endpoints do Prisma:
 
 `Gênero`
 
-Em `gênero`nossos dados são reduzidos a Id e nome do gênero do filme, onde temos a integração One to Many:
+Em `gênero.services`nossos dados são reduzidos a Id e nome do gênero do filme, onde temos a integração One to Many:
 
 - `createPrisma` incluindo um novo gênero;
 
@@ -42,7 +42,7 @@ Em `gênero`nossos dados são reduzidos a Id e nome do gênero do filme, onde te
 
 `Participante`
 
-Em `participante` fazemos a integração Many to Many, tenvando em conta que um personagem pode participar de vários filmes:
+Em `participante.services` fazemos a integração One to Many, lenvando em conta que um personagem pode participar de vários filmes, mas em tempos diferentes:
 
 - `createPrisma` incluindo um novo participante;
 
